@@ -1,0 +1,24 @@
+<div class="container" ng-controller="WelcomeController">
+    <div class="col-md-offset-1">
+        <div>
+            <h1>{{heading + message}}</h1>
+            <input ng-model="name" type="text" placeholder="Enter your name!">
+        </div>
+        <button ng-click="updateMessage()">Update</button>
+        <button ng-click="grabinfo()">Get Info</button>
+
+        <div class="row">
+            <div ng-repeat="movie in movies | orderBy:'title' | limitTo:4">
+                <div class="col-md-3">
+                        <img ng-src="{{movie.imageurl}}">
+                        <h3>{{movie.title}}</h3>
+                        <p>SKU: {{movie.sku}}</p>
+                        <p>{{movie.price | currency}}</p>
+                        <p ng-show="movie.showreview">{{movie.review}} out of 5</p>
+                        <p ng-hide="movie.showreview">Currently no reviews</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
